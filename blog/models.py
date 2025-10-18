@@ -10,6 +10,7 @@ from wagtail.snippets.models import register_snippet
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+from wagtail.search import index
 
 
 class BlogIndexPage(Page):
@@ -53,6 +54,15 @@ class BlogPage(Page):
         ], heading="Blog information"),
             "intro", "body", "gallery_images"
     ]
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
+
+
+
+
+    
 
 class BlogTagIndexPage(Page):
 

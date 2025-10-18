@@ -1,0 +1,28 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Django / Wagtail
+*.sqlite3
+media/
+static/
+staticfiles/
+whoosh_index/
+wagtail_cache/
+
+# Local settings
+local_settings.py
+settings/local.py
+
+# OS / editor files
+.DS_Store
+.idea/
+.vscode/
+*.log
