@@ -1,5 +1,8 @@
 from base.blocks import BaseStreamBlock
 
+# import ImageBlock:
+from wagtail.images.blocks import ImageBlock
+
 
 
 # import CharBlock, ListBlock, PageChooserBlock, PageChooserBlock, RichTextBlock, and StructBlock:
@@ -11,10 +14,7 @@ from wagtail.blocks import (
     StructBlock,
 )
 
-# import ImageBlock:
-from wagtail.images.blocks import ImageBlock
 
-from base.blocks import BaseStreamBlock
 
 # add CardBlock:
 class CardBlock(StructBlock):

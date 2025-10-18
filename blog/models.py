@@ -12,6 +12,16 @@ from taggit.models import TaggedItemBase
 
 from wagtail.search import index
 
+from wagtail.fields import StreamField
+from wagtail.models import Page
+from wagtail.admin.panels import FieldPanel
+from blog.blocks import CodeBlock,NoteBlock
+
+from wagtail.blocks import (
+    CharBlock,
+    RichTextBlock,
+
+)
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -33,7 +43,13 @@ class BlogPageTag(TaggedItemBase):
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    body = RichTextField(blank=True)
+    # body = RichTextField(blank=True)
+    body = StreamField([
+        ('heading', CharBlock()),
+        ('paragraph', RichTextBlock()),
+        ('code', CodeBlock()),
+        ("note", NoteBlock()),
+    ], use_json_field=True)
 
     # Add this:
     authors = ParentalManyToManyField('blog.Author', blank=True)

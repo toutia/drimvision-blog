@@ -26,7 +26,7 @@
 
     <div class="intro">{{ page.intro }}</div>
 
-    {{ page.body|richtext }}
+    {{ page.body }}
 
     {% for item in page.gallery_images.all %}
         <div style="float: inline-start; margin: 10px">
@@ -49,3 +49,14 @@
     {% endwith %}
 
 {% endblock %}
+
+{% block extra_js %}
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    hljs.highlightAll();
+  });
+</script>
+{% endblock %}

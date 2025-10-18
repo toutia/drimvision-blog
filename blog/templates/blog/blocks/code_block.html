@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="code-block relative bg-gray-900 text-gray-100 rounded-lg overflow-hidden">
+  <div class="absolute top-2 right-2">
+    <button
+      class="copy-btn bg-gray-800 text-xs px-2 py-1 rounded hover:bg-gray-700"
+      onclick="copyCode(this)"
+    >
+      Copy
+    </button>
+  </div>
+  <pre class="language-{{ self.language }} p-4 overflow-x-auto"><code>{{ self.code|escape }}</code></pre>
+</div>
+
+<script>
+function copyCode(button) {
+  const code = button.closest('.code-block').querySelector('code').innerText;
+  navigator.clipboard.writeText(code);
+
+  button.textContent = 'Copied!';
+  button.classList.add('copied');
+
+  setTimeout(() => {
+    button.textContent = 'Copy';
+    button.classList.remove('copied');
+  }, 2000);
+}
+</script>
