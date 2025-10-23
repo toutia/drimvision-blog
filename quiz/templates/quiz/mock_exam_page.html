@@ -2,34 +2,33 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-3xl mx-auto mt-10 bg-white rounded-2xl shadow p-6">
-
+<div class="exam-container">
   {% if submitted %}
     <!-- RESULTS VIEW -->
-    <h1 class="text-2xl font-semibold mb-4 text-gray-800">Exam Results</h1>
-    <p class="mb-4 font-semibold">
+    <h1>Exam Results</h1>
+    <p>
       Score: {{ score.earned_points }} / {{ score.total_points }} ({{ score.percentage }}%)
     </p>
 
-    <div class="space-y-6">
+    <div>
       {% for detail in details %}
-        <div class="p-4 border rounded-lg {% if detail.is_correct %}bg-green-50{% else %}bg-red-50{% endif %}">
-          <pre class="font-semibold mb-2">{{ forloop.counter }}. {{ detail.question }}</pre>
-          <ul class="list-disc pl-6">
+        <div {% if detail.is_correct %}class="correct"{% else %}class="incorrect"{% endif %}>
+          <pre>{{ forloop.counter }}. {{ detail.question }}</pre>
+          <ul>
             {% for label, option in detail.options.items %}
               <li>
                 <strong>{{ label }})</strong> {{ option }}
-                {% if label in detail.correct_answers %}<span class="text-green-600 font-semibold">✔</span>{% endif %}
-                {% if label in detail.selected and label not in detail.correct_answers %}<span class="text-red-600 font-semibold">✖</span>{% endif %}
+                {% if label in detail.correct_answers %}<span class="correct-icon">✔</span>{% endif %}
+                {% if label in detail.selected and label not in detail.correct_answers %}<span class="incorrect-icon">✖</span>{% endif %}
               </li>
             {% endfor %}
           </ul>
-          <p class="mt-2">
+          <p>
             <strong>Selected:</strong> {{ detail.selected|join:", " }} |
             <strong>Points:</strong> {{ detail.points }}
           </p>
           {% if detail.explanation %}
-            <p class="mt-1 text-gray-700"><strong>Explanation:</strong> {{ detail.explanation }}</p>
+            <pre class="explanation"><strong>Explanation:</strong> {{ detail.explanation }}</p>
           {% endif %}
         </div>
       {% endfor %}
@@ -37,58 +36,52 @@
 
   {% else %}
     <!-- ONGOING QUESTION VIEW -->
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-semibold text-gray-800">
-        Question {{ current_index|add:1 }} of {{ total }}
-      </h1>
+    <div>
+      <h1>Question {{ current_index|add:1 }} of {{ total }} ({{ question.points }} Points)</h1>
 
-      <div class="text-lg font-semibold text-red-600" id="timer">
-        Time left: <span id="time-remaining">{{ remaining_time }}</span>
+      {{question.question_text}}
+      <div id="timer">
+        Time left: <span id="time-remaining">{{ remaining_time }} </span> min
       </div>
     </div>
 
-    <div class="question-text">
+    <div>
       <pre>{{ question.text }}</pre>
     </div>
 
-    <form method="post" class="mt-6 space-y-4">
+    <form method="post">
       {% csrf_token %}
       <input type="hidden" name="current_index" value="{{ current_index }}">
 
       {% for label, option in question.choices.items %}
-        <label class="option-block">
+        <label>
           <input
             type="checkbox"
             name="q_{{ question.id }}"
             value="{{ label }}"
             {% if label in selected_labels %}checked{% endif %}
-            class="checkbox-input"
           >
-          <span class="option-label">{{ label }})</span>
-          <span class="option-text">{{ option }}</span>
+          <span>{{ label }})</span>
+          <span>{{ option }}</span>
         </label>
       {% endfor %}
 
-      <div class="mt-8 flex justify-between">
+      <div>
         {% if current_index > 0 %}
-          <button type="submit" name="prev" class="nav-btn">Previous</button>
-        {% else %}
-          <div></div>
+          <button type="submit" name="prev">Previous</button>
         {% endif %}
 
         {% if current_index|add:1 < total %}
-          <button type="submit" name="next" class="nav-btn">Next</button>
-        {% else %}
-          <button type="submit" class="submit-btn">Submit Exam</button>
+          <button type="submit" name="next">Next</button>
         {% endif %}
+        <button type="submit">Submit Exam</button>
       </div>
     </form>
 
     <!-- TIMER SCRIPT in minutes:seconds -->
     <script>
-      let timeLeft = {{ remaining_time }};
       const timerEl = document.getElementById('time-remaining');
-
+      let timeLeft = timerEl.textContent;
       function formatTime(seconds) {
         const m = Math.floor(seconds / 60);
         const s = seconds % 60;
@@ -108,6 +101,5 @@
       }, 1000);
     </script>
   {% endif %}
-
 </div>
 {% endblock %}

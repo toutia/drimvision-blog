@@ -109,6 +109,8 @@ class MockExamPage(Page):
         if (
             "questions_data" not in request.session
             or request.session.get("exam_type_id") != self.exam_type.id
+            or 'start_time' not in request.session
+        
         ):
             questions = self.get_random_questions()
             request.session["exam_type_id"] = self.exam_type.id
@@ -123,13 +125,21 @@ class MockExamPage(Page):
                 }
                 for q in questions
             ]
+            
             request.session["start_time"] = time.time()
             request.session["submitted_answers"] = {}
-
+            current_index = 0
+            remaining_time = max_duration
         else:
             # Load questions from session (no DB query)
-            questions_data = request.session["questions_data"]
-            questions = [
+
+            current_index = int(request.GET.get("q", 0))
+            start_time = request.session.get("start_time")
+            remaining_time = max_duration - int(time.time() - start_time)
+
+
+        questions_data = request.session["questions_data"]
+        questions = [
                 SimpleNamespace(
                     id=q["id"],
                     text=q["text"],
@@ -140,12 +150,16 @@ class MockExamPage(Page):
                 )
                 for q in questions_data
             ]
-
         total = len(questions)
-        current_index = int(request.GET.get("q", 0))
-        start_time = request.session.get("start_time")
-        remaining_time = max_duration - int(time.time() - start_time)
-
+        question = questions[current_index]
+ 
+        
+        # Get previously selected labels for this question
+        answer_key = f"q_{question.id}"
+        submitted_answers = request.session.get("submitted_answers", {})
+        selected_labels = submitted_answers.get(answer_key, [])
+        
+    
         # ✅ Timeout check
         if remaining_time <= 0:
             return self.render_results(request, questions)
@@ -170,18 +184,14 @@ class MockExamPage(Page):
 
             return redirect(f"{request.path}?q={current_index}")
 
-        question = questions[current_index]
-
-        # Get previously selected labels for this question
-        answer_key = f"q_{question.id}"
-        submitted_answers = request.session.get("submitted_answers", {})
-        selected_labels = submitted_answers.get(answer_key, [])
+        
 
         return render(request, self.template, {
             "page": self,
             "question": question,
             "current_index": current_index,
             "total": total,
+            "submitted":False,
             "remaining_time": remaining_time,
             "selected_labels": selected_labels,  # ✅ pass to template
         })
@@ -223,9 +233,12 @@ class MockExamPage(Page):
             })
 
         # Clear session after exam
+        print(request.session)
         for key in ["submitted_answers", "questions_data", "exam_type_id", "start_time"]:
             if key in request.session:
                 del request.session[key]
+
+        print(request.session)
 
         return render(request, self.template, {
             "page": self,

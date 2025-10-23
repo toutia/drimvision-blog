@@ -25,7 +25,7 @@ tta_exam_type, _ = ExamType.objects.get_or_create(
 
 
 
-with open("tta_answer_key_full_explanation.json") as f:
+with open("tta_questions_1.json") as f:
     question_data = json.load(f)
 
 
