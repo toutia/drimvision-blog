@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto mt-10 bg-white rounded-2xl shadow p-6">
+
+  {% if submitted %}
+    <!-- RESULTS VIEW -->
+    <h1 class="text-2xl font-semibold mb-4 text-gray-800">Exam Results</h1>
+    <p class="mb-4 font-semibold">
+      Score: {{ score.earned_points }} / {{ score.total_points }} ({{ score.percentage }}%)
+    </p>
+
+    <div class="space-y-6">
+      {% for detail in details %}
+        <div class="p-4 border rounded-lg {% if detail.is_correct %}bg-green-50{% else %}bg-red-50{% endif %}">
+          <pre class="font-semibold mb-2">{{ forloop.counter }}. {{ detail.question }}</pre>
+          <ul class="list-disc pl-6">
+            {% for label, option in detail.options.items %}
+              <li>
+                <strong>{{ label }})</strong> {{ option }}
+                {% if label in detail.correct_answers %}<span class="text-green-600 font-semibold">✔</span>{% endif %}
+                {% if label in detail.selected and label not in detail.correct_answers %}<span class="text-red-600 font-semibold">✖</span>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+          <p class="mt-2">
+            <strong>Selected:</strong> {{ detail.selected|join:", " }} |
+            <strong>Points:</strong> {{ detail.points }}
+          </p>
+          {% if detail.explanation %}
+            <p class="mt-1 text-gray-700"><strong>Explanation:</strong> {{ detail.explanation }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <!-- ONGOING QUESTION VIEW -->
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-semibold text-gray-800">
+        Question {{ current_index|add:1 }} of {{ total }}
+      </h1>
+
+      <div class="text-lg font-semibold text-red-600" id="timer">
+        Time left: <span id="time-remaining">{{ remaining_time }}</span>
+      </div>
+    </div>
+
+    <div class="question-text">
+      <pre>{{ question.text }}</pre>
+    </div>
+
+    <form method="post" class="mt-6 space-y-4">
+      {% csrf_token %}
+      <input type="hidden" name="current_index" value="{{ current_index }}">
+
+      {% for label, option in question.choices.items %}
+        <label class="option-block">
+          <input
+            type="checkbox"
+            name="q_{{ question.id }}"
+            value="{{ label }}"
+            {% if label in selected_labels %}checked{% endif %}
+            class="checkbox-input"
+          >
+          <span class="option-label">{{ label }})</span>
+          <span class="option-text">{{ option }}</span>
+        </label>
+      {% endfor %}
+
+      <div class="mt-8 flex justify-between">
+        {% if current_index > 0 %}
+          <button type="submit" name="prev" class="nav-btn">Previous</button>
+        {% else %}
+          <div></div>
+        {% endif %}
+
+        {% if current_index|add:1 < total %}
+          <button type="submit" name="next" class="nav-btn">Next</button>
+        {% else %}
+          <button type="submit" class="submit-btn">Submit Exam</button>
+        {% endif %}
+      </div>
+    </form>
+
+    <!-- TIMER SCRIPT in minutes:seconds -->
+    <script>
+      let timeLeft = {{ remaining_time }};
+      const timerEl = document.getElementById('time-remaining');
+
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        return m + ':' + (s < 10 ? '0' + s : s);
+      }
+
+      timerEl.textContent = formatTime(timeLeft);
+
+      const timer = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = formatTime(timeLeft);
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          document.querySelector('form').submit();
+        }
+      }, 1000);
+    </script>
+  {% endif %}
+
+</div>
+{% endblock %}
