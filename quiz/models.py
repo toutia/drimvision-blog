@@ -142,7 +142,7 @@ class MockExamPage(Page):
         questions = [
                 SimpleNamespace(
                     id=q["id"],
-                    text=q["text"],
+                    text=q["text"]+ f'\nSelect {len(q["answers"])} option(s).' if 'Select' not in q["text"] else q["text"] ,
                     choices=q["choices"],
                     points= q.get('points', 0),
                     answers = q['answers'],
