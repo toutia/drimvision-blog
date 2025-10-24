@@ -78,7 +78,7 @@
       "C": "4",
       "D": "5"
     },
-    "answers": [],
+    "answers": ["A"],
     "explanation": "There are 4 decision points in the graph, in nodes 1, 2, 4 and 6. Hence, we TTA-2.3.1 K3 2\n                            need to cover 8 decision outcomes: TRUE and FALSE for each of the four\n                            decisions. These correspond to the branches 1→2, 1→5, 2→3, 2→4, 4→2,\n                            4→6, 6→7 and 6→8. One test is not enough, because it will not be able to\n                            cover both 1→2 and 1→5. Two tests, however, will be enough; for example,\n                            the first one can go along t\n                                             he path 1→2→3→4→2→4→6→7→9 and the\n                            second one along the path 1→5→6→8→9. The first test exercises decision\n                            outcomes 1→2, 2→3, 2→4, 4→2, 4→6 and 6→7. The second one\n                            exercises the decision outcomes 1→5 and 6→8. Hence, both tests cover all\n                            eight decision outcomes, achieving 100% decision coverage.\n                            Thus:\n                            a) Is correct\n                            b) Is not correct\n                            c) Is not correct\n                            d) Is not correct",
     "learning_objective": "TTA-2.3.1",
     "klevel": "K3",
@@ -838,20 +838,20 @@
   },
   {
     "question_id": "50",
-    "question_text": "Which two considerations should be taken into account when selecting a test automation tool for component testing from a technical test analyst viewpoint?\nSelect 2 option(s).",
-    "options": {
-      "A": "Licensing cost only",
-      "B": "Ability to instrument code to measure coverage",
-      "C": "Support for the target technology stack at component level",
-      "D": "Number of available business keywords",
-      "E": "Integration with version control and CI/CD pipelines"
-    },
-    "answers": ["B","C"],
-    "explanation": "B) Instrumentation for coverage is a key TTA concern. C) Support for the target component technology stack is vital in tool selection. A) Cost alone is insufficient. D) Business keywords is more TA/automation engineer domain. E) CI/CD integration is relevant but less critical for component-level TTA tool selection than support & coverage instrumentation.",
-    "learning_objective": "TTA-6.4",
-    "klevel": "K3",
-    "points": 2
+   "question_text": "Which two considerations should be taken into account when selecting a test automation tool for component testing from a technical test analyst viewpoint?",
+  "options": {
+    "A": "Licensing cost only",
+    "B": "Ability to instrument code to measure coverage",
+    "C": "Support for the target technology stack at component level",
+    "D": "Number of available business keywords",
+    "E": "Integration with version control and CI/CD pipelines"
   },
+  "answers": ["C", "E"],
+  "explanation": "C) **Support for the target technology stack at the component level** is the most important consideration. A tool that supports the specific technology stack you're working with is essential for ensuring that the tests can interact with the system components properly. It also inherently subsumes the idea of measuring code coverage (as instrumentation typically comes as part of such support). B) While measuring coverage is important, **C** already covers this requirement. E) **Integration with version control and CI/CD pipelines** is important for continuous testing and automation, ensuring that tests can be seamlessly integrated into the development lifecycle. A) **Licensing cost** is important but should not be the primary consideration. D) **Number of available business keywords** is more relevant to test automation engineers rather than technical test analysts focused on component-level testing.",
+  "learning_objective": "TTA-2.3",
+  "klevel": "K3",
+  "points": 2
+},
   {
     "question_id": "51",
     "question_text": "In dynamic analysis of a component, which two defects are most likely to be identified?\nSelect 2 option(s).",
@@ -2387,7 +2387,7 @@
       "C": "Test the search functionality on different devices to ensure it’s accessible",
       "D": "Conduct another round of usability tests after the change is made"
     },
-    "answers": ["A", "B"],
+    "answers": ["C", "D"],
     "explanation": "A) Correct. Moving the search function to a more prominent location will make it easier for users to find and use. B) Correct. Adding a tooltip or on-screen instruction is a helpful way to guide users to the search function and enhance usability. C) Testing on different devices is important, but the main issue here is the location of the search function. D) Conducting another round of usability tests should follow after implementing the changes to ensure they address the issues.",
     "learning_objective": "TTA-6.1",
     "klevel": "K3",
@@ -2536,9 +2536,324 @@
       "C": "Improve the layout and appearance of the settings page to make it more visually appealing",
       "D": "Gather user feedback to understand why they are having trouble accessing the features"
     },
-    "answers": ["A", "D"],
+    "answers": ["B", "D"],
     "explanation": "A) Correct. Simplifying navigation by making key features more accessible from the main menu will immediately address the usability issues. D) Correct. Gathering user feedback helps in understanding the specific pain points and can guide the design of more user-friendly interfaces. B) While conducting additional testing is important, addressing the issue by simplifying the navigation should be prioritized first. C) Improving the layout is helpful, but the key issue is making features accessible.",
     "learning_objective": "TTA-6.1",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+  "question_id": "161",
+  "question_text": "Which two types of testing are primarily concerned with ensuring that the system can handle a high number of transactions without crashing?",
+  "options": {
+    "A": "Load testing",
+    "B": "Stress testing",
+    "C": "Performance testing",
+    "D": "Usability testing"
+  },
+  "answers": ["A", "B"],
+  "explanation": "A) Load testing ensures the system can handle expected traffic levels without failure. B) Stress testing goes further to determine the system's behavior under extreme conditions, including overloading the system. C) Performance testing focuses on how well the system performs under normal and peak load but is not necessarily about extreme failure conditions. D) Usability testing is unrelated to system capacity or handling transactions.",
+  "learning_objective": "TTA-4.2.4",
+  "klevel": "K2",
+  "points": 2
+},
+{
+  "question_id": "162",
+  "question_text": "You are conducting white-box testing on a module with a complex decision structure. To achieve 100% Modified Condition/Decision Coverage (MC/DC), how many independent conditions must be tested?",
+  "options": {
+    "A": "One",
+    "B": "Two",
+    "C": "Three",
+    "D": "Four"
+  },
+  "answers": ["B"],
+  "explanation": "B) To achieve 100% MC/DC, each condition in a decision must be independently tested to ensure it affects the decision’s outcome. Typically, two conditions are required for testing in a module with multiple decision points. A) A single condition is not enough to test for MC/DC. C) Three conditions are needed in certain complex cases but not always. D) Four is unnecessary unless specified by the decision logic.",
+  "learning_objective": "TTA-3.2.1",
+  "klevel": "K3",
+  "points": 3
+},
+{
+  "question_id": "163",
+  "question_text": "Which two testing techniques should be used for ensuring the correct integration between several independently developed modules of a complex system?",
+  "options": {
+    "A": "Integration testing",
+    "B": "Unit testing",
+    "C": "System testing",
+    "D": "Interface testing"
+  },
+  "answers": ["A", "D"],
+  "explanation": "A) Integration testing is specifically aimed at ensuring that different system modules interact correctly. D) Interface testing checks for issues in the communication between modules or systems. B) Unit testing is focused on individual components, not the interaction between multiple modules. C) System testing evaluates the system as a whole but is not specifically about module interaction.",
+  "learning_objective": "TTA-2.3.2",
+  "klevel": "K2",
+  "points": 2
+},
+{
+  "question_id": "164",
+  "question_text": "Which two are the primary concerns of performance testing during the software lifecycle?",
+  "options": {
+    "A": "Ensuring the system can handle large data volumes",
+    "B": "Testing the system’s usability in extreme conditions",
+    "C": "Verifying the response time under load",
+    "D": "Checking for functional correctness"
+  },
+  "answers": ["A", "C"],
+  "explanation": "A) Performance testing ensures the system can handle large amounts of data without degradation in performance. C) Verifying response time under load is a key part of performance testing. B) While usability is important, it is not the focus of performance testing. D) Functional correctness is covered by functional testing, not performance testing.",
+  "learning_objective": "TTA-4.2.4",
+  "klevel": "K3",
+  "points": 3
+},
+{
+    "question_id": "165",
+    "question_text": "You are conducting **regression testing** on a web application after a new feature has been added. The feature interacts with an existing module. Which two actions should you prioritize to ensure that the new feature doesn’t break existing functionality?",
+    "options": {
+      "A": "Test the new feature in isolation without considering other modules",
+      "B": "Test the entire application to verify that no existing functionality has been broken",
+      "C": "Automate regression tests to ensure consistency in repeated testing",
+      "D": "Focus on testing only the affected module"
+    },
+    "answers": ["B", "C"],
+    "explanation": "B) Correct. Regression testing ensures that new features do not affect existing functionality, and testing the entire application helps uncover issues. C) Correct. Automating regression tests improves efficiency and ensures tests are consistent and can be easily repeated. A) Testing only the new feature is insufficient since you also need to validate the rest of the application. D) Focusing only on the affected module misses the chance to catch potential integration issues with other parts of the system.",
+    "learning_objective": "TTA-3.3",
+    "klevel": "K2",
+    "points": 3
+  },
+  {
+    "question_id": "166",
+    "question_text": "Which two testing techniques are most commonly used for ensuring that the user interface (UI) is functional and behaves as expected during **functional testing**?",
+    "options": {
+      "A": "Boundary Value Analysis",
+      "B": "Equivalence Partitioning",
+      "C": "Usability Testing",
+      "D": "Interaction Testing"
+    },
+    "answers": ["B", "D"],
+    "explanation": "B) Correct. Equivalence Partitioning divides the input data into equivalent partitions to ensure all possible cases are tested. D) Correct. Interaction Testing focuses on how different UI elements interact with each other, which is critical for functional testing of the UI. A) Boundary Value Analysis is more suited for testing input ranges, not specifically for UI functionality. C) Usability Testing focuses on user experience, not functional behavior of the UI.",
+    "learning_objective": "TTA-2.1",
+    "klevel": "K2",
+    "points": 3
+  },
+  {
+    "question_id": "167",
+    "question_text": "When performing **performance testing** for a web application, which two factors are most important to assess?",
+    "options": {
+      "A": "The user interface responsiveness",
+      "B": "The application’s throughput and response time",
+      "C": "The system’s CPU and memory usage under load",
+      "D": "The aesthetic design of the website"
+    },
+    "answers": ["B", "C"],
+    "explanation": "B) Correct. Throughput and response time are crucial for assessing how well the system handles traffic and how quickly it responds under load. C) Correct. Monitoring CPU and memory usage helps identify potential bottlenecks and ensures the system is resource-efficient under load. A) User interface responsiveness is important but is part of usability testing, not performance testing. D) The aesthetic design is irrelevant to performance testing.",
+    "learning_objective": "TTA-4.2",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "168",
+    "question_text": "You are testing a component of a **microservices-based** system. Which two types of testing are essential for ensuring that the individual microservices interact correctly and the system functions as a whole?",
+    "options": {
+      "A": "Unit testing",
+      "B": "Integration testing",
+      "C": "System testing",
+      "D": "Performance testing"
+    },
+    "answers": ["B", "C"],
+    "explanation": "B) Correct. Integration testing ensures that individual microservices communicate correctly and handle the interactions as expected. C) Correct. System testing ensures that the entire system, consisting of many services, works together as intended. A) Unit testing focuses on individual components, but the interaction between services requires integration testing. D) Performance testing is important but does not focus on the interaction between microservices.",
+    "learning_objective": "TTA-3.1",
+    "klevel": "K2",
+    "points": 3
+  },
+  {
+    "question_id": "169",
+    "question_text": "Which two testing types would be best suited for verifying that an application works properly under extreme conditions, such as high traffic or excessive load?",
+    "options": {
+      "A": "Stress testing",
+      "B": "Load testing",
+      "C": "Functional testing",
+      "D": "Endurance testing"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Correct. Stress testing simulates extreme load to determine how the system behaves under failure conditions and breaks. B) Correct. Load testing evaluates the system's performance under normal and peak load conditions, ensuring it can handle expected user traffic. C) Functional testing verifies the correctness of features, but it doesn't focus on load or extreme conditions. D) Endurance testing checks performance over time but isn't designed to simulate extreme load scenarios.",
+    "learning_objective": "TTA-4.3",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "170",
+    "question_text": "You are testing a **web application** and find that certain users can bypass authentication by manipulating HTTP requests. Which of the following should be your next step to address this issue?",
+    "options": {
+      "A": "Perform a penetration test to identify potential vulnerabilities",
+      "B": "Report the vulnerability and escalate it to the development team",
+      "C": "Fix the vulnerability in the authentication mechanism and retest",
+      "D": "Conduct a code review to identify all potential security flaws"
+    },
+    "answers": ["B", "C"],
+    "explanation": "B) Correct. As a tester, reporting the vulnerability to the development team and escalating it for remediation is a priority. C) Correct. Fixing the vulnerability and retesting it ensures that the authentication mechanism is secure. A) Penetration testing is valuable but should be done after identifying and addressing specific vulnerabilities. D) Code reviews are essential but are typically carried out by developers, not testers, to address security flaws.",
+    "learning_objective": "TTA-6.2",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "171",
+    "question_text": "Which two activities are most critical when conducting **acceptance testing** to ensure the system meets user requirements?",
+    "options": {
+      "A": "Testing the system against the requirements and user stories",
+      "B": "Validating that the system is performance-optimized",
+      "C": "Checking that the system’s functionality is in line with the business goals",
+      "D": "Performing security tests to find vulnerabilities"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Correct. Acceptance testing ensures that the system meets the specified requirements and user stories, confirming it fulfills the intended purpose. C) Correct. Validating that the system aligns with business goals is a core part of acceptance testing, ensuring it delivers value to the stakeholders. B) Performance optimization is important but is typically handled during performance testing, not acceptance testing. D) Security testing is critical but isn't the main focus during acceptance testing.",
+    "learning_objective": "TTA-2.2",
+    "klevel": "K2",
+    "points": 3
+  },
+  {
+    "question_id": "172",
+    "question_text": "You are tasked with verifying the correctness of **boundary conditions** in a piece of software. Which testing technique would be most effective in this case?",
+    "options": {
+      "A": "Equivalence partitioning",
+      "B": "Boundary value analysis",
+      "C": "State transition testing",
+      "D": "Decision table testing"
+    },
+    "answers": ["B"],
+    "explanation": "B) Correct. Boundary value analysis is specifically designed to test boundary conditions, focusing on values at the edge of input ranges. A) Equivalence partitioning divides the input into groups but doesn't focus on the boundaries. C) State transition testing is more focused on state changes and event sequences. D) Decision table testing is useful for complex decision logic, but boundary conditions are better addressed with boundary value analysis.",
+    "learning_objective": "TTA-3.2",
+    "klevel": "K2",
+    "points": 3
+  },
+  {
+    "question_id": "173",
+    "question_text": "During **security testing** of a web application, you find that a user can access data they should not be able to by modifying URLs. What type of security vulnerability is this likely to be?",
+    "options": {
+      "A": "Cross-Site Scripting (XSS)",
+      "B": "Insecure Direct Object Reference (IDOR)",
+      "C": "SQL Injection",
+      "D": "Broken Authentication"
+    },
+    "answers": ["B"],
+    "explanation": "B) Correct. Insecure Direct Object Reference (IDOR) occurs when an attacker can access objects or data by manipulating input such as URLs. A) XSS involves injecting scripts into web pages, not URL manipulation. C) SQL Injection allows attackers to inject malicious SQL, not access unauthorized data via URL. D) Broken Authentication relates to issues with logging in and authentication mechanisms, not direct object access.",
+    "learning_objective": "TTA-6.3",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "174",
+    "question_text": "You are conducting **model-based testing** (MBT) for a complex system that has multiple interacting components with conditional behaviors. Which two actions would ensure that your MBT approach provides sufficient coverage of all potential interactions between components?",
+    "options": {
+      "A": "Ensure that the model includes both normal and exceptional scenarios for all components",
+      "B": "Focus on generating tests only for the most frequently used components",
+      "C": "Incorporate state transition models for each component to handle different input conditions",
+      "D": "Limit test generation to paths with the highest probability of execution"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Correct. Ensuring that the model includes both normal and exceptional scenarios for all components is critical for providing comprehensive test coverage. B) Focusing only on the most frequently used components will leave the less common paths untested. C) Correct. Incorporating state transition models allows for capturing the different inputs and outputs, ensuring that all states and conditions are tested. D) Limiting test generation to high-probability paths can leave critical corner cases untested.",
+    "learning_objective": "TTA-2.4",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "175",
+    "question_text": "You are testing a **highly dynamic** cloud-based application where resources (CPU, memory, etc.) are provisioned on-demand. The application’s performance is crucial, and you need to measure the system’s response time under varying resource conditions. Which two testing techniques should you prioritize to ensure that the system performs optimally in a real-world environment?",
+    "options": {
+      "A": "Load testing with fluctuating resources to simulate real-world traffic patterns",
+      "B": "Endurance testing to monitor system behavior under prolonged use",
+      "C": "Stress testing to push the system beyond its resource limits",
+      "D": "Usability testing to ensure the application meets user expectations"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Correct. Load testing with fluctuating resources ensures that the system can handle dynamic resource allocation under real-world conditions. B) Correct. Endurance testing is critical to monitoring the system’s behavior over extended periods, ensuring stability during sustained use. C) Stress testing helps identify system limits but isn't as relevant for performance under normal conditions. D) Usability testing is important but is not focused on performance metrics.",
+    "learning_objective": "TTA-4.2",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "176",
+    "question_text": "In **security testing** for a financial application, you notice that sensitive transaction data is being exposed in server logs. Which two actions should be prioritized to address this issue effectively?",
+    "options": {
+      "A": "Encrypt sensitive data before it is written to logs",
+      "B": "Delete all logs that contain sensitive data immediately",
+      "C": "Mask sensitive information in logs, displaying only necessary details",
+      "D": "Implement strict log access controls to prevent unauthorized access to logs"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Correct. Encrypting sensitive data before logging it ensures that even if logs are accessed by unauthorized users, the data is unreadable. C) Correct. Masking sensitive information in logs ensures that only necessary, non-sensitive details are exposed, reducing the risk of data leakage. B) Deleting logs immediately isn't a sustainable solution, as logs are critical for troubleshooting and auditing. D) While log access controls are important, they don't address the fundamental issue of sensitive data being logged in the first place.",
+    "learning_objective": "TTA-6.3",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "177",
+    "question_text": "You are tasked with performing **boundary value analysis** on an e-commerce application that accepts customer ages ranging from 18 to 100. What would be the most comprehensive set of test inputs for boundary value analysis?",
+    "options": {
+      "A": "18, 100, 17, 101",
+      "B": "17, 18, 19, 99, 100, 101",
+      "C": "18, 100, 99, 101",
+      "D": "17, 18, 100, 101"
+    },
+    "answers": ["B"],
+    "explanation": "B) Correct. Boundary value analysis requires testing the boundaries and values just outside them. The set 17, 18, 19 (below and at the lower boundary) and 99, 100, 101 (just below and above the upper boundary) covers all critical boundary conditions. A) While 17 and 101 test the boundaries, it misses values near 19 and 99, which are essential for full coverage. C) Testing only 99 and 101 misses the lower boundary. D) Missing critical middle values, like 19 or 99, makes this set less comprehensive.",
+    "learning_objective": "TTA-3.2",
+    "klevel": "K2",
+    "points": 3
+  },
+  {
+    "question_id": "178",
+    "question_text": "During **exploratory testing**, you discover a defect where the application crashes when the user performs a specific sequence of actions. What should be your next step as a tester?",
+    "options": {
+      "A": "Attempt to reproduce the defect and document the exact steps",
+      "B": "Notify the development team to fix the bug immediately",
+      "C": "Check if the issue is related to recent changes in the codebase",
+      "D": "Run automated tests to see if the defect is already covered"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Correct. As a tester, your first step is to reproduce the defect and document the exact steps so that developers can reliably recreate and fix the issue. C) Correct. Checking if the issue relates to recent changes helps identify potential regression issues or areas where code changes may have introduced the defect. B) Reporting is essential, but you should first gather data about the defect. D) Automated tests might not cover this specific issue, so manual testing is necessary to identify and document it.",
+    "learning_objective": "TTA-5.1",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "179",
+    "question_text": "Which two of the following are most important considerations when selecting a test automation tool for testing a **cloud-based system**?",
+    "options": {
+      "A": "The tool’s ability to scale with cloud resources",
+      "B": "Support for running tests across multiple cloud environments",
+      "C": "Integration with version control systems for code management",
+      "D": "Availability of pre-built test cases for cloud applications"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Correct. The tool’s ability to scale with cloud resources is crucial for testing cloud-based systems, ensuring that it can handle varying loads and resources effectively. B) Correct. Support for running tests across multiple cloud environments ensures compatibility and coverage across different platforms and configurations. C) Version control integration is useful but not as critical for cloud-based system testing as scalability and environment support. D) Pre-built test cases can be helpful, but they are less important than scalability and environment compatibility.",
+    "learning_objective": "TTA-2.4",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "180",
+    "question_text": "You are conducting **integration testing** for a web application with multiple third-party APIs. One API is intermittently failing during tests. What should be your first step to diagnose and address the issue?",
+    "options": {
+      "A": "Verify the status and reliability of the third-party API during test execution",
+      "B": "Test the other APIs to ensure they are functioning correctly",
+      "C": "Check the application’s integration points to see if the issue is internal",
+      "D": "Report the issue to the third-party API provider immediately"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Correct. Verifying the status and reliability of the third-party API during test execution is crucial to determine if the issue lies with the external service. C) Correct. Checking the integration points internally ensures that the application is correctly interacting with the API and that the issue isn’t within your code. B) Testing other APIs may help, but it doesn't directly address the issue with the failing API. D) Reporting to the API provider may be necessary but should be done after confirming the issue on your end.",
+    "learning_objective": "TTA-2.2",
+    "klevel": "K3",
+    "points": 3
+  },
+  {
+    "question_id": "181",
+    "question_text": "You are tasked with performing **security testing** on a web application. During your testing, you discover that the application is not enforcing strong password policies. What should be your next step?",
+    "options": {
+      "A": "Report the issue to the development team for remediation",
+      "B": "Check other parts of the application for additional security vulnerabilities",
+      "C": "Test the password reset functionality to see if it’s secure",
+      "D": "Test with different weak passwords to confirm the issue"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Correct. As a tester, your next step should be to report the weak password policy to the development team so that it can be addressed and remediated. B) Correct. It's important to check other areas of the application for security vulnerabilities, as this could be a symptom of a broader security issue. C) Testing the password reset functionality is useful but secondary to addressing the weak password policy first. D) Testing with weak passwords further can confirm the issue but isn't necessary once you've identified the problem.",
+    "learning_objective": "TTA-6.2",
     "klevel": "K3",
     "points": 3
   }
