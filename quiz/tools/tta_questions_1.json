@@ -246,7 +246,7 @@
       "C": "W CC, RE X CP, CO Y CC, CH Z CO, RE – – – –",
       "D": "W CH, CO X CC, RE Y CP, RE Z CC, CH – – – –"
     },
-    "answers": [],
+    "answers": ["C"],
     "explanation": "Cyclomatic Complexity (CC) indicates the number of independent paths TTA-3.2.3 K3 2\n                            tough the code. The higher the CC number, the worse code maintainability\n                            is likely to be, hence system W and Y should be addressed in this area.\n                            Cohesion (CH) is a measure to which a module is self-contained and\n                            focused on a single task. The lower it is, the worse the code maintainability\n                            is likely to be. Hence system Y should be addressed in this area.\n                            Coupling (CP) is a measure of the degree to which modules rely on each\n                            other. The higher it is, the worse the code maintainability is likely to be.\n                            Hence system X should be addressed in this area.\n                            Commented Code (CO) indicates how much of the code is documented by\n                            comments. Less comments indicates worse code maintainability. Hence\n                            systems X and Z should be addressed in this area.\n                            Repeated code instances (RE) count how many code instances are\n                            duplicated. The higher the number, the worse the code maintainability is\n                            likely to be. Hence systems W and Z should be addressed in this area.\n                            Thus:\n                            a) Is not correct\n                            b) Is not correct\n                            c) Is correct (W CC & RE, X CP & CO, Y CC & CH, Z CO & RE)\n                                       –         –         –        –\n                            d) Is not correct",
     "learning_objective": "TTA-3.2.3",
     "klevel": "K3",
@@ -2856,5 +2856,1207 @@
     "learning_objective": "TTA-6.2",
     "klevel": "K3",
     "points": 3
+  },
+  {
+    "question_id": "182",
+    "question_text": "You are testing an **autonomous vehicle control system** responsible for braking decisions. The logic for applying brakes depends on the conditions: (OBSTACLE_DETECTED AND SPEED > 60) OR (ROAD_WET AND SPEED > 40). Which white-box test technique would provide the highest level of confidence while remaining feasible for such a safety-critical system?",
+    "options": {
+      "A": "Decision testing",
+      "B": "Modified Condition/Decision Coverage (MC/DC)",
+      "C": "Statement testing",
+      "D": "Multiple condition testing"
+    },
+    "answers": ["B"],
+    "explanation": "MC/DC testing is the most appropriate for safety-critical systems as it ensures that each atomic condition independently affects the decision outcome without requiring exhaustive multiple condition testing, which would be infeasible.",
+    "learning_objective": "TTA-2.8.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "183",
+    "question_text": "A Technical Test Analyst is reviewing a function that calculates insurance premiums. Static analysis reports indicate high **cyclomatic complexity** and low **cohesion**. Which recommendation should be made first to improve maintainability?",
+    "options": {
+      "A": "Increase unit test coverage to 100%",
+      "B": "Split the function into smaller, more focused subroutines",
+      "C": "Add more inline comments to clarify business logic",
+      "D": "Replace all conditional logic with switch statements"
+    },
+    "answers": ["B"],
+    "explanation": "Splitting large, complex, and low-cohesion functions into smaller, single-purpose modules reduces complexity, improves readability, and enhances maintainability. Comments help but do not address the core structural issue.",
+    "learning_objective": "TTA-3.2.3",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "184",
+    "question_text": "You are performing **dynamic analysis** on a financial transaction module that has recently shown intermittent crashes. The tool reports multiple memory leaks and one null pointer dereference. Which of the following should be your next step?",
+    "options": {
+      "A": "Increase the load on the system to reproduce the issue faster",
+      "B": "Perform static code analysis to identify uninitialized variables",
+      "C": "Add assertions in the code to catch the null pointer condition early",
+      "D": "Rerun the dynamic analysis with garbage collection disabled"
+    },
+    "answers": ["C"],
+    "explanation": "After identifying a null pointer dereference, adding assertions or defensive programming measures is a valid next step to confirm and prevent the fault at runtime. Dynamic findings should guide targeted preventive action.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "185",
+    "question_text": "A new healthcare monitoring system must process patient data securely and meet regulatory compliance for **data confidentiality and integrity**. Which combination of test types should be prioritized by the Technical Test Analyst?",
+    "options": {
+      "A": "Security testing and reliability testing",
+      "B": "Maintainability testing and performance efficiency testing",
+      "C": "Usability testing and compatibility testing",
+      "D": "Portability testing and installability testing"
+    },
+    "answers": ["A"],
+    "explanation": "For regulatory healthcare systems, security (to ensure confidentiality and integrity) and reliability (to ensure consistent operation) are top priorities per quality characteristic alignment.",
+    "learning_objective": "TTA-4.2.1",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "186",
+    "question_text": "You are analyzing logs from a **load test** on a new e-commerce platform. Response times increase significantly after 5,000 concurrent users, though no errors are reported. Which type of non-functional testing should be extended to identify the cause?",
+    "options": {
+      "A": "Scalability testing",
+      "B": "Stress testing",
+      "C": "Reliability testing",
+      "D": "Operability testing"
+    },
+    "answers": ["A"],
+    "explanation": "Scalability testing focuses on how performance efficiency changes as load increases. The degradation after 5,000 users suggests scalability limits rather than outright system failure.",
+    "learning_objective": "TTA-4.2.4",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "187",
+    "question_text": "During API testing of a payment gateway, you discover that the API returns full credit card numbers in the response payloads. Which quality characteristic is being violated, and what should be your immediate action?",
+    "options": {
+      "A": "Security – Report the issue as a critical confidentiality breach",
+      "B": "Reliability – Increase the number of test repetitions",
+      "C": "Performance – Measure response latency impact",
+      "D": "Maintainability – Suggest masking logic in documentation"
+    },
+    "answers": ["A"],
+    "explanation": "Exposing full credit card numbers breaches data confidentiality and violates security standards (e.g., PCI DSS). This must be reported immediately as a critical security issue.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "188",
+    "question_text": "While planning system integration testing for a **distributed AI analytics platform**, multiple components are hosted across different cloud regions. Which of the following risks should be prioritized?",
+    "options": {
+      "A": "Test environment scalability limitations",
+      "B": "Organizational coordination between distributed teams",
+      "C": "Tool acquisition for regression testing",
+      "D": "Stakeholder agreement on feature priority"
+    },
+    "answers": ["B"],
+    "explanation": "Distributed system integration often introduces coordination and synchronization risks among geographically dispersed teams and components. This is a key risk area for TTA to address.",
+    "learning_objective": "TTA-4.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "189",
+    "question_text": "A Technical Test Analyst is designing **security tests** for a cloud-based HR application. Which test would BEST evaluate the **integrity** of the stored employee data?",
+    "options": {
+      "A": "Attempt to modify salary data through unauthorized API access",
+      "B": "Check response times under simultaneous logins",
+      "C": "Verify encryption strength for stored credentials",
+      "D": "Review password reset functionality"
+    },
+    "answers": ["A"],
+    "explanation": "Testing integrity involves ensuring that only authorized users can modify data. Attempting unauthorized data modification directly validates integrity protection mechanisms.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "190",
+    "question_text": "You are reviewing the results of static analysis performed on a large legacy codebase. The report shows numerous **dead code segments** and variables that are **defined but never used**. Which of the following statements is TRUE?",
+    "options": {
+      "A": "These issues are examples of control flow and data flow anomalies respectively",
+      "B": "These issues can only be detected using dynamic analysis",
+      "C": "Both issues represent potential memory leaks during execution",
+      "D": "Neither issue affects maintainability"
+    },
+    "answers": ["A"],
+    "explanation": "Dead code (unreachable) represents control flow anomalies, while variables defined but not used are data flow anomalies. Both can be detected by static analysis and reduce maintainability.",
+    "learning_objective": "TTA-3.2.2",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "191",
+    "question_text": "After performing **modified condition/decision coverage** testing on a safety-critical module, you notice that one atomic condition has never independently affected the decision outcome. What should you do NEXT?",
+    "options": {
+      "A": "Add a new test case to isolate the impact of that condition",
+      "B": "Mark it as covered since the decision was evaluated",
+      "C": "Perform statement coverage to validate all paths",
+      "D": "Stop testing because MC/DC coverage has been achieved"
+    },
+    "answers": ["A"],
+    "explanation": "If an atomic condition has not independently affected the decision outcome, MC/DC has not been achieved. A new test case must be added to demonstrate its independent influence.",
+    "learning_objective": "TTA-2.4.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "192",
+    "question_text": "Which of the following BEST describes the main objective of static analysis in technical testing?",
+    "options": {
+      "A": "To execute code to identify logical errors during runtime",
+      "B": "To detect defects such as unreachable code or unused variables without execution",
+      "C": "To assess system performance under high load conditions",
+      "D": "To ensure compliance with customer business requirements"
+    },
+    "answers": ["B"],
+    "explanation": "Static analysis identifies issues in code, design, or documentation without executing the program. Examples include detecting unreachable code, naming violations, or uninitialized variables.",
+    "learning_objective": "TTA-3.2.1",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "193",
+    "question_text": "During reviews, the Technical Test Analyst notices that multiple modules have similar algorithms implemented separately. Which quality characteristic is MOST likely affected?",
+    "options": {
+      "A": "Efficiency",
+      "B": "Maintainability",
+      "C": "Reliability",
+      "D": "Portability"
+    },
+    "answers": ["B"],
+    "explanation": "Duplicated code reduces maintainability because changes must be replicated across multiple modules, increasing the risk of inconsistency.",
+    "learning_objective": "TTA-3.2.3",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "194",
+    "question_text": "Which of the following test types primarily targets **confidentiality** as a sub-characteristic of security?",
+    "options": {
+      "A": "Stress testing",
+      "B": "Penetration testing",
+      "C": "Recovery testing",
+      "D": "Usability testing"
+    },
+    "answers": ["B"],
+    "explanation": "Penetration testing checks whether unauthorized users can access confidential data or system resources, directly addressing confidentiality.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "195",
+    "question_text": "In the context of **API testing**, which defect would most likely be discovered through boundary value analysis?",
+    "options": {
+      "A": "Incorrect HTTP response codes",
+      "B": "Failure when parameter values reach defined limits",
+      "C": "Inconsistent data serialization format",
+      "D": "Missing endpoint authentication"
+    },
+    "answers": ["B"],
+    "explanation": "Boundary value analysis is used to detect defects when input parameters reach their upper or lower boundaries, typical in numerical API parameters.",
+    "learning_objective": "TTA-2.7.1",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "196",
+    "question_text": "You are asked to identify **product risks** for a new web-based booking system. Which of the following risks falls under the Technical Test Analyst’s responsibility?",
+    "options": {
+      "A": "Late delivery of project documentation",
+      "B": "Unreliable integration with external payment gateways",
+      "C": "Frequent changes in business requirements",
+      "D": "Lack of stakeholder engagement"
+    },
+    "answers": ["B"],
+    "explanation": "The Technical Test Analyst focuses on technical product risks such as integration failures, security vulnerabilities, or performance inefficiencies.",
+    "learning_objective": "TTA-1.2.1",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "197",
+    "question_text": "When selecting a test automation tool for performance testing, which criterion should the Technical Test Analyst consider FIRST?",
+    "options": {
+      "A": "The cost of annual license renewals",
+      "B": "Compatibility with the system’s technology stack",
+      "C": "Availability of pre-written test cases",
+      "D": "Number of testers trained on the tool"
+    },
+    "answers": ["B"],
+    "explanation": "Tool compatibility with the system’s architecture, interfaces, and protocols is essential before considering cost or team training.",
+    "learning_objective": "TTA-5.1.1",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "198",
+    "question_text": "A Technical Test Analyst is preparing to use a static code analyzer for a project written in Java. Which of the following defect types is the tool LEAST likely to identify?",
+    "options": {
+      "A": "Unused imports",
+      "B": "Unreachable code blocks",
+      "C": "Incorrect algorithm output",
+      "D": "Variables declared but never used"
+    },
+    "answers": ["C"],
+    "explanation": "Static analysis cannot detect logical errors related to incorrect output since it does not execute the program.",
+    "learning_objective": "TTA-3.2.1",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "199",
+    "question_text": "You are executing **reliability testing** for a mobile banking application. Which of the following metrics would provide the MOST useful measurement?",
+    "options": {
+      "A": "Mean Time To Failure (MTTF)",
+      "B": "Number of concurrent users",
+      "C": "Transaction throughput rate",
+      "D": "Code coverage percentage"
+    },
+    "answers": ["A"],
+    "explanation": "MTTF measures the average time the system operates before failure, directly indicating reliability.",
+    "learning_objective": "TTA-4.2.2",
+    "klevel": "K3",
+    "points": 2
+  },
+  {
+    "question_id": "200",
+    "question_text": "Which of the following statements about **dynamic analysis** is TRUE?",
+    "options": {
+      "A": "It identifies potential performance bottlenecks by analyzing code execution",
+      "B": "It focuses on non-executable documentation such as design diagrams",
+      "C": "It can only be performed after all static analysis issues are resolved",
+      "D": "It cannot be used to detect memory leaks"
+    },
+    "answers": ["A"],
+    "explanation": "Dynamic analysis involves executing software to monitor runtime behavior such as memory usage, performance, and potential bottlenecks.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "201",
+    "question_text": "In technical testing, which of the following is a correct example of **maintainability testing**?",
+    "options": {
+      "A": "Evaluating how easily a module’s source code can be modified after static analysis findings",
+      "B": "Checking if the software functions correctly on multiple operating systems",
+      "C": "Determining the maximum number of users before response time degrades",
+      "D": "Assessing data recovery after a server crash"
+    },
+    "answers": ["A"],
+    "explanation": "Maintainability testing evaluates how easily software can be modified, corrected, or enhanced — often following static analysis or reviews.",
+    "learning_objective": "TTA-4.2.3",
+    "klevel": "K2",
+    "points": 1
+  },
+  {
+    "question_id": "202",
+    "question_text": "You are testing a drone control module whose flight path logic depends on three atomic conditions: GPS_LOCKED, OBSTACLE_DETECTED, and BATTERY_OK. The decision is: IF (GPS_LOCKED AND BATTERY_OK) OR OBSTACLE_DETECTED THEN LAND_IMMEDIATELY. Due to certification rules, the system must comply with **DO-178C Level A**. Which test approach provides adequate coverage while maintaining test efficiency?",
+    "options": {
+      "A": "Decision testing with all combinations of conditions",
+      "B": "Modified Condition/Decision Coverage (MC/DC) showing each atomic condition’s independent effect",
+      "C": "Statement coverage of the landing decision logic",
+      "D": "Multiple condition testing of all eight combinations"
+    },
+    "answers": ["B"],
+    "explanation": "For airborne safety-critical systems, DO-178C Level A requires Modified Condition/Decision Coverage (MC/DC). It ensures that each condition independently affects the outcome, achieving the required rigor without full multiple-condition explosion.",
+    "learning_objective": "TTA-2.8.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "203",
+    "question_text": "A Technical Test Analyst must select test techniques to achieve the **most cost-effective coverage** for a control system that uses multiple nested IF-ELSE constructs, but time constraints prevent full MC/DC testing. Which combination of test techniques provides a justified compromise?",
+    "options": {
+      "A": "Statement coverage combined with decision testing on high-risk modules",
+      "B": "Equivalence partitioning combined with path testing",
+      "C": "Branch coverage on all code plus boundary value analysis",
+      "D": "Use-case testing plus condition coverage"
+    },
+    "answers": ["A"],
+    "explanation": "Statement coverage alone is insufficient, but combining it with decision testing on critical modules balances cost and thoroughness when MC/DC is infeasible. This hybrid approach targets logical branches most likely to fail.",
+    "learning_objective": "TTA-2.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "204",
+    "question_text": "You review the results of a static analysis report showing 80% of functions have high cyclomatic complexity and low cohesion. The project manager suggests delaying refactoring until after release. As a Technical Test Analyst, what should you recommend and why?",
+    "options": {
+      "A": "Agree; static findings are not critical to release quality",
+      "B": "Disagree; refactoring should be prioritized because complexity and low cohesion increase future defect rates and testing costs",
+      "C": "Agree only if full decision coverage tests exist",
+      "D": "Disagree; postpone testing until code metrics improve"
+    },
+    "answers": ["B"],
+    "explanation": "High cyclomatic complexity and low cohesion indicate poor maintainability and high defect probability. Addressing them early reduces long-term cost and improves test effectiveness; delaying increases risk.",
+    "learning_objective": "TTA-3.2.3",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "205",
+    "question_text": "During dynamic analysis of a **real-time trading system**, multiple short-duration CPU spikes were detected but without functional errors. What is the MOST likely interpretation, and what should be your next step?",
+    "options": {
+      "A": "Minor issue; continue testing since no functional defect occurred",
+      "B": "Indicates potential performance bottlenecks—perform detailed profiling to isolate inefficient code segments",
+      "C": "Suggest disabling garbage collection to reduce latency",
+      "D": "Report as reliability defect related to memory leaks"
+    },
+    "answers": ["B"],
+    "explanation": "CPU spikes under real-time constraints may lead to latency breaches. Profiling helps locate inefficient loops or synchronization issues causing transient peaks—vital in time-sensitive systems.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "206",
+    "question_text": "You are preparing non-functional tests for a **distributed IoT monitoring platform** that transmits continuous sensor data. The customer is concerned about **data loss and timing delays**. Which combination of test types addresses both issues effectively?",
+    "options": {
+      "A": "Reliability and performance efficiency testing",
+      "B": "Security and maintainability testing",
+      "C": "Compatibility and usability testing",
+      "D": "Portability and recovery testing"
+    },
+    "answers": ["A"],
+    "explanation": "Data loss relates to reliability, while timing delays relate to performance efficiency. Together, they verify the platform’s resilience and timeliness under realistic load conditions.",
+    "learning_objective": "TTA-4.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "207",
+    "question_text": "A Technical Test Analyst must evaluate whether **security logging** in a financial application supports accountability and non-repudiation. Which test strategy provides the most valid verification?",
+    "options": {
+      "A": "Injecting invalid credentials and verifying log entries for user identity and timestamp",
+      "B": "Simulating SQL injection to test data integrity protection",
+      "C": "Disabling logging to test confidentiality",
+      "D": "Running a performance load test on the authentication API"
+    },
+    "answers": ["A"],
+    "explanation": "To test accountability and non-repudiation, auditors must verify that each action is traceable with authenticated identity and timestamps—achieved by validating detailed and tamper-proof log entries.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "208",
+    "question_text": "You are integrating a new **load-testing tool** into an existing CI/CD pipeline. During dry runs, test results vary significantly across executions. As the Technical Test Analyst, which factor should you analyze FIRST to ensure data reliability?",
+    "options": {
+      "A": "Network latency variations and test environment stability",
+      "B": "License limitations of the tool",
+      "C": "Differences in script parameter naming",
+      "D": "Output formatting of generated reports"
+    },
+    "answers": ["A"],
+    "explanation": "Performance test reproducibility depends on consistent test environments and stable network conditions. Variability in these factors leads to inconsistent metrics even if the tool works correctly.",
+    "learning_objective": "TTA-5.1.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "209",
+    "question_text": "After defect clustering analysis, you discover that 70% of system failures originate from two components. How should this information influence your next test cycle?",
+    "options": {
+      "A": "Reduce testing in these components since they’ve already failed",
+      "B": "Increase test depth for these high-defect components while applying lightweight regression elsewhere",
+      "C": "Distribute test effort evenly to avoid bias",
+      "D": "Archive those components until design refactoring is complete"
+    },
+    "answers": ["B"],
+    "explanation": "Defect clustering suggests that focused retesting and intensified testing in fault-prone components increases efficiency, aligning with Pareto analysis (80/20 rule) for risk-based prioritization.",
+    "learning_objective": "TTA-6.1.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "210",
+    "question_text": "In a continuous delivery project, automated unit and integration tests run with every build. However, several **performance regressions** were detected in production. Which improvement should the Technical Test Analyst recommend?",
+    "options": {
+      "A": "Integrate performance and reliability tests into the CI pipeline before deployment",
+      "B": "Reduce the frequency of code commits to stabilize builds",
+      "C": "Shift performance testing to post-release monitoring only",
+      "D": "Focus solely on static code metrics to predict performance"
+    },
+    "answers": ["A"],
+    "explanation": "Integrating non-functional (performance/reliability) checks into CI/CD ensures early detection of regressions, embodying the shift-left principle and continuous quality improvement.",
+    "learning_objective": "TTA-5.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "211",
+    "question_text": "During a root-cause analysis of escaped defects, you observe that **API response errors** were not detected during system testing because test data lacked edge-case payloads. As a Technical Test Analyst, which corrective action BEST prevents recurrence?",
+    "options": {
+      "A": "Enhance data design and generation procedures to include boundary and negative test data in automated suites",
+      "B": "Increase execution frequency of existing tests",
+      "C": "Focus future reviews on functional specifications only",
+      "D": "Delegate test data creation entirely to developers"
+    },
+    "answers": ["A"],
+    "explanation": "Including edge and negative data during automated API testing improves defect detection and data coverage. The issue originated from inadequate test data design rather than execution frequency.",
+    "learning_objective": "TTA-6.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "202",
+    "question_text": "You are testing a drone control module whose flight path logic depends on three atomic conditions: GPS_LOCKED, OBSTACLE_DETECTED, and BATTERY_OK. The decision is: IF (GPS_LOCKED AND BATTERY_OK) OR OBSTACLE_DETECTED THEN LAND_IMMEDIATELY. Due to certification rules, the system must comply with **DO-178C Level A**. Which test approach provides adequate coverage while maintaining test efficiency?",
+    "options": {
+      "A": "Decision testing with all combinations of conditions",
+      "B": "Modified Condition/Decision Coverage (MC/DC) showing each atomic condition’s independent effect",
+      "C": "Statement coverage of the landing decision logic",
+      "D": "Multiple condition testing of all eight combinations"
+    },
+    "answers": ["B"],
+    "explanation": "For airborne safety-critical systems, DO-178C Level A requires Modified Condition/Decision Coverage (MC/DC). It ensures that each condition independently affects the outcome, achieving the required rigor without full multiple-condition explosion.",
+    "learning_objective": "TTA-2.8.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "203",
+    "question_text": "A Technical Test Analyst must select test techniques to achieve the **most cost-effective coverage** for a control system that uses multiple nested IF-ELSE constructs, but time constraints prevent full MC/DC testing. Which combination of test techniques provides a justified compromise?",
+    "options": {
+      "A": "Statement coverage combined with decision testing on high-risk modules",
+      "B": "Equivalence partitioning combined with path testing",
+      "C": "Branch coverage on all code plus boundary value analysis",
+      "D": "Use-case testing plus condition coverage"
+    },
+    "answers": ["A"],
+    "explanation": "Statement coverage alone is insufficient, but combining it with decision testing on critical modules balances cost and thoroughness when MC/DC is infeasible. This hybrid approach targets logical branches most likely to fail.",
+    "learning_objective": "TTA-2.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "204",
+    "question_text": "You review the results of a static analysis report showing 80% of functions have high cyclomatic complexity and low cohesion. The project manager suggests delaying refactoring until after release. As a Technical Test Analyst, what should you recommend and why?",
+    "options": {
+      "A": "Agree; static findings are not critical to release quality",
+      "B": "Disagree; refactoring should be prioritized because complexity and low cohesion increase future defect rates and testing costs",
+      "C": "Agree only if full decision coverage tests exist",
+      "D": "Disagree; postpone testing until code metrics improve"
+    },
+    "answers": ["B"],
+    "explanation": "High cyclomatic complexity and low cohesion indicate poor maintainability and high defect probability. Addressing them early reduces long-term cost and improves test effectiveness; delaying increases risk.",
+    "learning_objective": "TTA-3.2.3",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "205",
+    "question_text": "During dynamic analysis of a **real-time trading system**, multiple short-duration CPU spikes were detected but without functional errors. What is the MOST likely interpretation, and what should be your next step?",
+    "options": {
+      "A": "Minor issue; continue testing since no functional defect occurred",
+      "B": "Indicates potential performance bottlenecks—perform detailed profiling to isolate inefficient code segments",
+      "C": "Suggest disabling garbage collection to reduce latency",
+      "D": "Report as reliability defect related to memory leaks"
+    },
+    "answers": ["B"],
+    "explanation": "CPU spikes under real-time constraints may lead to latency breaches. Profiling helps locate inefficient loops or synchronization issues causing transient peaks—vital in time-sensitive systems.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "206",
+    "question_text": "You are preparing non-functional tests for a **distributed IoT monitoring platform** that transmits continuous sensor data. The customer is concerned about **data loss and timing delays**. Which combination of test types addresses both issues effectively?",
+    "options": {
+      "A": "Reliability and performance efficiency testing",
+      "B": "Security and maintainability testing",
+      "C": "Compatibility and usability testing",
+      "D": "Portability and recovery testing"
+    },
+    "answers": ["A"],
+    "explanation": "Data loss relates to reliability, while timing delays relate to performance efficiency. Together, they verify the platform’s resilience and timeliness under realistic load conditions.",
+    "learning_objective": "TTA-4.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "207",
+    "question_text": "A Technical Test Analyst must evaluate whether **security logging** in a financial application supports accountability and non-repudiation. Which test strategy provides the most valid verification?",
+    "options": {
+      "A": "Injecting invalid credentials and verifying log entries for user identity and timestamp",
+      "B": "Simulating SQL injection to test data integrity protection",
+      "C": "Disabling logging to test confidentiality",
+      "D": "Running a performance load test on the authentication API"
+    },
+    "answers": ["A"],
+    "explanation": "To test accountability and non-repudiation, auditors must verify that each action is traceable with authenticated identity and timestamps—achieved by validating detailed and tamper-proof log entries.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "208",
+    "question_text": "You are integrating a new **load-testing tool** into an existing CI/CD pipeline. During dry runs, test results vary significantly across executions. As the Technical Test Analyst, which factor should you analyze FIRST to ensure data reliability?",
+    "options": {
+      "A": "Network latency variations and test environment stability",
+      "B": "License limitations of the tool",
+      "C": "Differences in script parameter naming",
+      "D": "Output formatting of generated reports"
+    },
+    "answers": ["A"],
+    "explanation": "Performance test reproducibility depends on consistent test environments and stable network conditions. Variability in these factors leads to inconsistent metrics even if the tool works correctly.",
+    "learning_objective": "TTA-5.1.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "209",
+    "question_text": "After defect clustering analysis, you discover that 70% of system failures originate from two components. How should this information influence your next test cycle?",
+    "options": {
+      "A": "Reduce testing in these components since they’ve already failed",
+      "B": "Increase test depth for these high-defect components while applying lightweight regression elsewhere",
+      "C": "Distribute test effort evenly to avoid bias",
+      "D": "Archive those components until design refactoring is complete"
+    },
+    "answers": ["B"],
+    "explanation": "Defect clustering suggests that focused retesting and intensified testing in fault-prone components increases efficiency, aligning with Pareto analysis (80/20 rule) for risk-based prioritization.",
+    "learning_objective": "TTA-6.1.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "210",
+    "question_text": "In a continuous delivery project, automated unit and integration tests run with every build. However, several **performance regressions** were detected in production. Which improvement should the Technical Test Analyst recommend?",
+    "options": {
+      "A": "Integrate performance and reliability tests into the CI pipeline before deployment",
+      "B": "Reduce the frequency of code commits to stabilize builds",
+      "C": "Shift performance testing to post-release monitoring only",
+      "D": "Focus solely on static code metrics to predict performance"
+    },
+    "answers": ["A"],
+    "explanation": "Integrating non-functional (performance/reliability) checks into CI/CD ensures early detection of regressions, embodying the shift-left principle and continuous quality improvement.",
+    "learning_objective": "TTA-5.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "211",
+    "question_text": "During a root-cause analysis of escaped defects, you observe that **API response errors** were not detected during system testing because test data lacked edge-case payloads. As a Technical Test Analyst, which corrective action BEST prevents recurrence?",
+    "options": {
+      "A": "Enhance data design and generation procedures to include boundary and negative test data in automated suites",
+      "B": "Increase execution frequency of existing tests",
+      "C": "Focus future reviews on functional specifications only",
+      "D": "Delegate test data creation entirely to developers"
+    },
+    "answers": ["A"],
+    "explanation": "Including edge and negative data during automated API testing improves defect detection and data coverage. The issue originated from inadequate test data design rather than execution frequency.",
+    "learning_objective": "TTA-6.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "212",
+    "question_text": "You are a Technical Test Analyst assigned to a medical device project using a third-party encryption library. During risk analysis, the Product Owner highlights potential exposure of patient data if the library fails to meet compliance standards. Which is the BEST risk mitigation action for the Technical Test Analyst?",
+    "options": {
+      "A": "Define additional performance efficiency tests for the encryption module",
+      "B": "Plan static and dynamic security tests focusing on encryption boundary behavior",
+      "C": "Add usability tests for all data entry forms to detect weak input validation",
+      "D": "Postpone encryption testing until integration with the user interface is complete"
+    },
+    "answers": ["B"],
+    "explanation": "The primary risk concerns data exposure due to noncompliant encryption. The Technical Test Analyst should mitigate this by planning both static analysis (code review of cryptographic calls) and dynamic security tests around encryption boundary behavior.",
+    "learning_objective": "TTA-1.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "213",
+    "question_text": "You are testing a decision-making algorithm that computes loan approval outcomes based on multiple input parameters (credit score, income, loan amount, and risk category). The project must demonstrate that each input independently affects the final decision. Which coverage criterion ensures this requirement is met?",
+    "options": {
+      "A": "Statement coverage",
+      "B": "Decision coverage",
+      "C": "Modified Condition/Decision Coverage (MC/DC)",
+      "D": "Multiple condition coverage"
+    },
+    "answers": ["C"],
+    "explanation": "MC/DC ensures each atomic condition can independently affect the overall decision outcome, which fulfills regulatory and business audit requirements for explainability in decision-making algorithms.",
+    "learning_objective": "TTA-2.4.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "214",
+    "question_text": "Static analysis results show that 30% of the code in a telecommunications subsystem has unreachable blocks and redundant variable assignments. The development manager argues that these are harmless since the system passes all unit tests. As the Technical Test Analyst, what is your BEST argument?",
+    "options": {
+      "A": "Unreachable and redundant code may indicate hidden defects and increase maintenance risk; they must be addressed before integration testing",
+      "B": "Since unit tests pass, these findings can be deprioritized",
+      "C": "Static analysis reports can be ignored if dynamic tests achieve full decision coverage",
+      "D": "Unreachable code only affects readability, not system quality"
+    },
+    "answers": ["A"],
+    "explanation": "Static analysis findings such as dead code and redundant variables point to poor control and data flow integrity, leading to higher defect probability during future maintenance. Addressing them early reduces future rework and improves quality.",
+    "learning_objective": "TTA-3.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "215",
+    "question_text": "During dynamic analysis of a multimedia streaming platform, you observe frequent buffer overflows under peak load, even though average throughput meets requirements. What should be your next step as a Technical Test Analyst?",
+    "options": {
+      "A": "Extend the test duration to observe whether performance remains stable over time",
+      "B": "Conduct focused code profiling to locate memory allocation inefficiencies causing the buffer issues",
+      "C": "Increase the concurrency of the test to simulate worse conditions",
+      "D": "Report it as an expected condition caused by network latency"
+    },
+    "answers": ["B"],
+    "explanation": "Buffer overflows under load are signs of poor memory handling. Profiling helps locate root causes such as inefficient allocation or missing deallocation logic, ensuring reliable performance under stress.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "216",
+    "question_text": "You are defining the non-functional test strategy for a **real-time navigation system**. The product must remain available with an update rate of less than one second under normal traffic conditions. Which two test types should be prioritized to verify these requirements?",
+    "options": {
+      "A": "Reliability testing and performance efficiency testing",
+      "B": "Security testing and maintainability testing",
+      "C": "Usability testing and compatibility testing",
+      "D": "Portability testing and recovery testing"
+    },
+    "answers": ["A"],
+    "explanation": "Reliability ensures continuous operation, while performance efficiency verifies update frequency and response time — both directly validate the system’s real-time behavior and availability constraints.",
+    "learning_objective": "TTA-4.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "217",
+    "question_text": "You are conducting **security testing** on a distributed payroll application. During testing, you discover that user session tokens are not invalidated after logout. What should your next step be as a Technical Test Analyst?",
+    "options": {
+      "A": "Report a defect since it violates session management best practices and may lead to session hijacking",
+      "B": "Ignore the behavior since users can close the browser to end the session",
+      "C": "Perform performance tests to confirm token expiration delay",
+      "D": "Test other unrelated functionalities before reporting"
+    },
+    "answers": ["A"],
+    "explanation": "Session tokens that persist after logout violate confidentiality and security best practices, creating risk for hijacking. Immediate reporting and retesting after remediation are essential.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "218",
+    "question_text": "Your organization is automating regression tests for a microservices architecture using a continuous integration pipeline. Intermittent test failures occur when services are deployed asynchronously. Which action should the Technical Test Analyst take?",
+    "options": {
+      "A": "Implement synchronization mechanisms or service health checks within the automation framework before test execution",
+      "B": "Increase test execution speed to minimize environmental instability",
+      "C": "Run tests manually to confirm intermittent behavior",
+      "D": "Disable automated regression temporarily until all services stabilize"
+    },
+    "answers": ["A"],
+    "explanation": "Intermittent failures in CI are typically caused by asynchronous service readiness. Implementing service health checks or synchronization waits stabilizes automated execution.",
+    "learning_objective": "TTA-5.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "219",
+    "question_text": "A Technical Test Analyst reviews the defect trend chart over three releases. Although the number of executed tests increased, defect detection rates dropped sharply. What is the MOST likely interpretation, and what should be done?",
+    "options": {
+      "A": "The system quality has improved; maintain the same strategy",
+      "B": "Tests are redundant or poorly targeted; review and optimize test design and risk prioritization",
+      "C": "The defect management tool is underreporting defects; recalibrate reporting metrics",
+      "D": "Developers are fixing defects faster, reducing reported numbers"
+    },
+    "answers": ["B"],
+    "explanation": "A decreasing detection rate despite higher execution volume often signals inefficiency or redundancy in test design. The TTA should refine test coverage and ensure focus on risk-prone areas.",
+    "learning_objective": "TTA-6.1.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "220",
+    "question_text": "After conducting a root-cause analysis of several production defects, you find that missing boundary test cases were a common factor. How should this outcome guide future process improvement?",
+    "options": {
+      "A": "Enhance test design reviews to verify boundary coverage for all numerical input fields",
+      "B": "Increase system-level exploratory testing sessions",
+      "C": "Adopt static analysis tools to catch data flow anomalies automatically",
+      "D": "Reduce regression testing frequency to focus on new features"
+    },
+    "answers": ["A"],
+    "explanation": "Root-cause analysis identified inadequate boundary coverage. The best corrective action is to strengthen review checklists to ensure thorough boundary value test design.",
+    "learning_objective": "TTA-6.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "221",
+    "question_text": "Your organization is implementing defect classification metrics to support continuous improvement. The Technical Test Analyst notices that most high-severity defects originate during requirements review, not execution. What process improvement should be prioritized?",
+    "options": {
+      "A": "Strengthen early static analysis and formal review procedures",
+      "B": "Reduce test execution time to catch defects earlier",
+      "C": "Add more integration-level tests to the regression suite",
+      "D": "Delay defect classification until post-release analysis"
+    },
+    "answers": ["A"],
+    "explanation": "If high-severity defects originate during requirements review, the process weakness lies in early analysis. Enhancing static analysis and formal review rigor prevents defects before implementation.",
+    "learning_objective": "TTA-6.2.3",
+    "klevel": "K4",
+    "points": 3
+  },
+   {
+    "question_id": "222",
+    "question_text": "You are defining a risk-based test strategy for an **autonomous navigation system**. Which TWO actions should the Technical Test Analyst take to ensure risks are properly addressed in test planning?",
+    "options": {
+      "A": "Map identified product risks to specific test conditions and techniques",
+      "B": "Delegate risk prioritization entirely to the project manager",
+      "C": "Align test intensity with risk likelihood and impact",
+      "D": "Focus only on functional risks since non-functional risks are handled separately"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Correct: Mapping risks to test conditions ensures traceability. C) Correct: Risk-based testing adjusts effort based on impact and likelihood. B and D are incorrect — risk prioritization and non-functional risks are also part of the TTA’s responsibility.",
+    "learning_objective": "TTA-1.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "223",
+    "question_text": "You are designing white-box tests for a **complex decision module**. Which TWO test techniques provide effective structural coverage without exhaustive testing?",
+    "options": {
+      "A": "Decision coverage",
+      "B": "Modified Condition/Decision Coverage (MC/DC)",
+      "C": "Path coverage",
+      "D": "Statement coverage"
+    },
+    "answers": ["A", "B"],
+    "explanation": "Decision coverage ensures each decision outcome is tested, while MC/DC confirms that each atomic condition independently influences the decision. Path coverage is exhaustive and impractical, while statement coverage is too shallow.",
+    "learning_objective": "TTA-2.4.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "224",
+    "question_text": "Static analysis of a control system shows several **data flow anomalies**. Which TWO examples correctly represent data flow anomalies?",
+    "options": {
+      "A": "A variable is used before it is defined",
+      "B": "A variable is defined but never used",
+      "C": "A variable is declared within a nested loop",
+      "D": "A variable is used and then redefined before being output"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) and B) represent data flow anomalies — using variables before definition and defining without use both indicate potential logical or design issues. C and D describe code structure or style, not anomalies.",
+    "learning_objective": "TTA-3.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "225",
+    "question_text": "You are executing dynamic analysis on an **embedded control unit**. Which TWO findings would indicate a potential **real-time performance defect**?",
+    "options": {
+      "A": "Increased response time under constant input conditions",
+      "B": "Memory utilization remains stable throughout the test",
+      "C": "Thread synchronization delays during interrupt handling",
+      "D": "CPU usage decreases as workload increases"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Rising response time indicates timing inefficiency. C) Synchronization delays reveal scheduling or locking issues. B shows stability, and D is an abnormal trend but not specific evidence of real-time failure.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "226",
+    "question_text": "A Technical Test Analyst is preparing non-functional tests for a **mission-critical healthcare platform**. Which TWO quality characteristics should receive the highest testing priority?",
+    "options": {
+      "A": "Security",
+      "B": "Reliability",
+      "C": "Portability",
+      "D": "Usability"
+    },
+    "answers": ["A", "B"],
+    "explanation": "Security ensures patient data confidentiality, and reliability ensures continuous safe operation — both are vital in healthcare systems. Portability and usability, though important, are secondary priorities here.",
+    "learning_objective": "TTA-4.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "227",
+    "question_text": "During **security testing**, you discover that the application fails to enforce role-based access control (RBAC) and also transmits sensitive data over HTTP. Which TWO actions are appropriate next steps?",
+    "options": {
+      "A": "Report both issues as critical security defects",
+      "B": "Verify if other modules enforce proper access restrictions",
+      "C": "Ignore the HTTP issue since it’s unrelated to authentication",
+      "D": "Perform performance tests to measure impact of security fixes"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Both findings are severe confidentiality and authorization violations. B) Checking other modules helps determine if the problem is systemic. C and D don’t directly address the security risk.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "228",
+    "question_text": "You are evaluating **two candidate tools** for test automation in a CI/CD pipeline. Which TWO technical factors should guide the final selection?",
+    "options": {
+      "A": "Compatibility with the application’s technology stack and APIs",
+      "B": "Ability to integrate with version control and build systems",
+      "C": "Total number of GUI test cases already automated",
+      "D": "The tool’s graphical interface style and color theme"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Integration and compatibility are essential for CI/CD automation reliability. B) Seamless linkage with build and version control ensures maintainable automation. C and D are irrelevant selection criteria.",
+    "learning_objective": "TTA-5.1.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "229",
+    "question_text": "A Technical Test Analyst observes repeated test automation failures due to **environment configuration drift**. Which TWO measures can effectively prevent such instability?",
+    "options": {
+      "A": "Containerize the test environment using consistent infrastructure as code",
+      "B": "Run automation scripts manually for each new build",
+      "C": "Integrate environment setup scripts into the CI pipeline",
+      "D": "Reduce automation scope to high-priority smoke tests only"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Containerization ensures consistent environments. C) Automating setup in CI eliminates manual drift. B and D treat symptoms, not the root cause.",
+    "learning_objective": "TTA-5.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "230",
+    "question_text": "After analyzing defect distribution over five sprints, you find that most critical defects occur during **integration testing** and relate to **interface mismatches**. Which TWO process improvements should be recommended?",
+    "options": {
+      "A": "Introduce earlier API contract validation or service virtualization",
+      "B": "Increase manual regression testing frequency post-integration",
+      "C": "Conduct static interface reviews during component development",
+      "D": "Postpone integration testing until all features are complete"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Early validation of interface contracts reduces mismatch defects. C) Static interface reviews prevent design-level inconsistencies. B and D delay detection and increase cost of rework.",
+    "learning_objective": "TTA-6.1.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "231",
+    "question_text": "A Technical Test Analyst is performing root cause analysis on recurring production defects. The investigation reveals that test data did not reflect realistic production edge cases, and reviewers missed several design inconsistencies. Which TWO preventive actions address these root causes?",
+    "options": {
+      "A": "Enhance test data design using production data patterns and boundary analysis",
+      "B": "Strengthen technical review checklists to include interface consistency checks",
+      "C": "Reduce review effort to accelerate development velocity",
+      "D": "Perform performance testing earlier in the project"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Better test data coverage prevents false confidence. B) Improved reviews catch early design inconsistencies. C and D do not directly address the identified root causes.",
+    "learning_objective": "TTA-6.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+   {
+    "question_id": "232",
+    "question_text": "You are reviewing the following pseudo-code for white-box testing:\n\n```\nIF (x > 10 OR y < 5) THEN\n   IF (z = 0) THEN\n      result = A\n   ELSE\n      result = B\n   ENDIF\nELSE\n   result = C\nENDIF\n```\n\nWhich TWO statements are TRUE regarding achieving **Modified Condition/Decision Coverage (MC/DC)**?",
+    "options": {
+      "A": "At least one test case must show that changing 'x > 10' alone affects the outcome",
+      "B": "At least one test case must vary both 'x' and 'y' simultaneously to observe the decision outcome",
+      "C": "A minimum of four test cases are required to achieve full MC/DC for this code",
+      "D": "Statement coverage can be achieved with fewer tests than MC/DC coverage"
+    },
+    "answers": ["A", "D"],
+    "explanation": "A) Correct: MC/DC requires showing that each condition independently affects the decision. D) Correct: Statement coverage is less demanding. B) violates independence (two conditions vary together), and C) overestimates — typically 3–4 tests suffice but not always required by rule.",
+    "learning_objective": "TTA-2.4.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "233",
+    "question_text": "You are analyzing a **control flow graph** for a module. It has 10 nodes and 15 edges. One entry and one exit point exist. Based on this, which TWO conclusions are correct?",
+    "options": {
+      "A": "The cyclomatic complexity of the module is 6",
+      "B": "At least 6 linearly independent paths exist",
+      "C": "Decision coverage requires fewer test cases than path coverage",
+      "D": "Achieving path coverage requires executing 15 test cases"
+    },
+    "answers": ["A", "B"],
+    "explanation": "Cyclomatic complexity = E - N + 2 = 15 - 10 + 2 = 7. However, with one entry/exit, complexity = 7; so at least 7 independent paths exist. B) is valid for independence count. C) is true generally but not deducible directly; D) is incorrect as number of paths is not equal to edges.",
+    "learning_objective": "TTA-2.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "234",
+    "question_text": "A dynamic analysis tool shows the following runtime results for a C program:\n\n| Metric | Value |\n|---------|-------|\n| Memory leaks detected | 3 |\n| Null pointer dereferences | 0 |\n| Average heap usage | 92% |\n| CPU utilization | 55% |\n\nWhich TWO conclusions are most appropriate for the Technical Test Analyst?",
+    "options": {
+      "A": "Memory leaks are present and should be investigated via code profiling",
+      "B": "Null pointer safety is acceptable in current runs",
+      "C": "CPU utilization indicates potential algorithmic inefficiency",
+      "D": "Heap usage is within optimal range and poses no risk"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) Memory leaks must be analyzed via profiling. B) No dereference errors appeared, indicating stable pointer handling. C) 55% CPU does not indicate inefficiency, and D) 92% heap use is high and risky.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "235",
+    "question_text": "The following **static analysis summary** is produced for a Java class:\n\n| Metric | Result |\n|---------|--------|\n| Cyclomatic Complexity | 16 |\n| Lines of Code | 210 |\n| Coupling Between Objects (CBO) | 12 |\n| Lack of Cohesion (LCOM) | 0.85 |\n\nWhich TWO actions should the Technical Test Analyst recommend?",
+    "options": {
+      "A": "Suggest refactoring the class into smaller components to improve cohesion and reduce complexity",
+      "B": "Increase test coverage to compensate for maintainability risks",
+      "C": "Ignore findings since LCOM < 1 is acceptable",
+      "D": "Reduce decision coverage to simplify test execution"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) High complexity and low cohesion indicate maintainability risk — refactor. B) Additional testing mitigates short-term risk. C) LCOM of 0.85 is poor, and D) reducing coverage is not a solution.",
+    "learning_objective": "TTA-3.2.3",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "236",
+    "question_text": "You receive the following **performance test graph** showing response times under increasing user load:\n\n```\nUsers: 100 → 200 → 400 → 800 → 1600\nResponse time (ms): 300 → 320 → 380 → 850 → 2500\n```\n\nWhich TWO conclusions are valid?",
+    "options": {
+      "A": "The system exhibits a performance threshold around 800 users",
+      "B": "Response degradation is linear, indicating scalability readiness",
+      "C": "Performance tuning should focus on database or I/O bottlenecks",
+      "D": "The system meets scalability expectations for expected user loads"
+    },
+    "answers": ["A", "C"],
+    "explanation": "Response time grows exponentially beyond 800 users, suggesting a scalability threshold. Likely causes include database contention or I/O latency. Linear degradation (B) is false, and (D) indicates unmet expectations.",
+    "learning_objective": "TTA-4.2.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "237",
+    "question_text": "After running **load tests**, the Technical Test Analyst examines system logs and observes:\n\n- 502 Gateway errors during peak load\n- Increased response times before errors\n- No memory or CPU resource exhaustion\n\nWhich TWO root causes should be investigated?",
+    "options": {
+      "A": "Connection pool size limits in the application server",
+      "B": "Thread synchronization deadlocks",
+      "C": "Network timeouts or proxy misconfiguration",
+      "D": "Memory leak in heap allocation"
+    },
+    "answers": ["A", "C"],
+    "explanation": "502 errors often indicate upstream connectivity failures, commonly due to connection pool exhaustion (A) or proxy timeouts (C). Deadlocks or leaks would show resource starvation, which is not observed here.",
+    "learning_objective": "TTA-4.2.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "238",
+    "question_text": "A code coverage report for a module shows:\n\n| Metric | Value |\n|---------|-------|\n| Statement Coverage | 100% |\n| Decision Coverage | 60% |\n| Condition Coverage | 40% |\n\nWhich TWO actions should the Technical Test Analyst recommend?",
+    "options": {
+      "A": "Design additional tests to increase decision and condition coverage",
+      "B": "Conclude that all logic paths are fully tested since statement coverage is 100%",
+      "C": "Prioritize testing of untested decision branches",
+      "D": "Remove redundant test cases to save effort"
+    },
+    "answers": ["A", "C"],
+    "explanation": "Full statement coverage does not ensure decision logic has been exercised. A) and C) are correct: add tests for untested branches and conditions to achieve thorough logical coverage.",
+    "learning_objective": "TTA-2.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "239",
+    "question_text": "The following output is observed in a **SQL injection test** log:\n\n```\nInput: user=' OR '1'='1';--\nResponse: 200 OK\nUser authenticated successfully\n```\n\nWhich TWO actions are appropriate next steps for the Technical Test Analyst?",
+    "options": {
+      "A": "Report a critical security vulnerability due to successful injection",
+      "B": "Perform further testing to identify the extent of SQL injection impact",
+      "C": "Ignore since this is expected test input for boundary conditions",
+      "D": "Run stress tests to check load tolerance"
+    },
+    "answers": ["A", "B"],
+    "explanation": "Successful SQL injection means authentication bypass. Report immediately (A) and extend testing (B) to assess how deep the vulnerability goes. C and D are unrelated.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "240",
+    "question_text": "A defect trend chart shows:\n\n| Iteration | Tests Executed | Defects Found |\n|------------|----------------|----------------|\n| Sprint 1 | 200 | 40 |\n| Sprint 2 | 250 | 20 |\n| Sprint 3 | 300 | 5 |\n\nWhich TWO interpretations are plausible for the Technical Test Analyst?",
+    "options": {
+      "A": "The defect detection rate is dropping, possibly indicating weaker test effectiveness",
+      "B": "System stability is improving as major defects are already removed",
+      "C": "The test process is unreliable and should be abandoned",
+      "D": "Defect clustering indicates new features are not being tested"
+    },
+    "answers": ["A", "B"],
+    "explanation": "A) A declining rate might mean tests are not exposing new defects. B) It can also reflect improved software quality. Both interpretations require correlation with release data before conclusion.",
+    "learning_objective": "TTA-6.1.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "241",
+    "question_text": "You are analyzing test automation logs that show 20% of scripts failed due to 'element not found' errors after UI changes. Which TWO corrective actions are most effective?",
+    "options": {
+      "A": "Introduce robust locators and page object model abstraction",
+      "B": "Increase test data variability in automation scripts",
+      "C": "Implement versioned UI mapping aligned with build releases",
+      "D": "Disable flaky tests to improve overall pass rate"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Page object abstraction reduces locator fragility. C) Versioned UI maps ensure automation stays in sync with UI updates. B and D don’t resolve root cause; they mask or sidestep it.",
+    "learning_objective": "TTA-5.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "242",
+    "question_text": "You are reviewing a static analysis report for a C++ module handling sensor data. The tool flags several warnings for ‘variable used before initialization’ and ‘unreachable return statements’. Which ONE recommendation is most appropriate for the Technical Test Analyst?",
+    "options": {
+      "A": "Recommend code inspection to confirm uninitialized variable usage and remove dead code",
+      "B": "Ignore these findings because they are compiler-level optimizations",
+      "C": "Focus testing only on dynamic analysis since static warnings are non-critical",
+      "D": "Increase statement coverage to validate compiler optimizations"
+    },
+    "answers": ["A"],
+    "explanation": "Uninitialized variables and unreachable statements indicate control-flow and data-flow anomalies. A) is correct because manual inspection validates them before dynamic execution. Others misunderstand static analysis purpose.",
+    "learning_objective": "TTA-3.2.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "243",
+    "question_text": "A decision table for tax calculation has four conditions and sixteen possible rules. Only nine rules are implemented in code. Which TWO actions should the Technical Test Analyst take?",
+    "options": {
+      "A": "Investigate missing rules to verify whether they represent unreachable or invalid combinations",
+      "B": "Create test cases for all sixteen rules to achieve completeness",
+      "C": "Perform pairwise testing instead of full combination coverage",
+      "D": "Mark unimplemented rules as 'not applicable' after business review"
+    },
+    "answers": ["A", "D"],
+    "explanation": "A) Check missing rules for business relevance. D) If confirmed invalid, document them formally. Full 16-rule testing (B) may waste effort; C) changes technique rather than addressing risk.",
+    "learning_objective": "TTA-2.7.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "244",
+    "question_text": "You are analyzing this pseudo-code fragment:\n\n```\nIF (A AND B) OR (C AND NOT D) THEN\n   executeTask()\nENDIF\n```\n\nWhich TWO statements are TRUE regarding test design for decision coverage?",
+    "options": {
+      "A": "At least two tests are required to achieve decision coverage",
+      "B": "At least four tests are required to achieve full MC/DC coverage",
+      "C": "A single test with A=B=C=D=TRUE achieves both statement and decision coverage",
+      "D": "Changing D alone should be shown to affect the decision outcome under MC/DC"
+    },
+    "answers": ["A", "D"],
+    "explanation": "A) Decision coverage needs one TRUE and one FALSE outcome. D) Under MC/DC, each condition—including D—must independently affect the result. B) may require more but isn’t fixed; C) achieves only statement coverage.",
+    "learning_objective": "TTA-2.4.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "245",
+    "question_text": "You receive a **code coverage report**:\n\n| Coverage Type | Percentage |\n|----------------|-------------|\n| Statement | 95% |\n| Decision | 80% |\n| Condition | 60% |\n\nWhich ONE interpretation is most accurate?",
+    "options": {
+      "A": "The current tests do not exercise all logical paths; more condition tests are needed",
+      "B": "Full decision coverage implies full condition coverage, so this result is inconsistent",
+      "C": "Statement coverage ensures sufficient logical testing; no improvement is needed",
+      "D": "Condition coverage cannot be lower than decision coverage"
+    },
+    "answers": ["A"],
+    "explanation": "Condition coverage being lower indicates that some Boolean sub-conditions never evaluated to both TRUE and FALSE. Logical completeness is missing, requiring extra condition-focused tests.",
+    "learning_objective": "TTA-2.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "246",
+    "question_text": "Dynamic analysis shows intermittent latency spikes in a messaging server, though CPU and memory remain stable. The log reveals repeated connection re-establishments. Which TWO potential root causes should be investigated?",
+    "options": {
+      "A": "Network socket timeout configuration",
+      "B": "Inefficient loop computation in message handler",
+      "C": "Garbage collection frequency",
+      "D": "Connection pool exhaustion under load"
+    },
+    "answers": ["A", "D"],
+    "explanation": "A) and D) relate to connection churn and reconnection overhead, matching log evidence. B) would affect CPU, and C) would manifest as memory fluctuations.",
+    "learning_objective": "TTA-3.3.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "247",
+    "question_text": "A performance test produces this throughput chart:\n\nUsers: 100→200→400→800\nTransactions/sec: 220→420→800→810\n\nWhich TWO interpretations are correct?",
+    "options": {
+      "A": "System throughput plateaus near 800 users, indicating a bottleneck",
+      "B": "Performance efficiency scales linearly across all loads",
+      "C": "Bottleneck investigation should start with database or I/O subsystems",
+      "D": "The system meets infinite scalability expectations"
+    },
+    "answers": ["A", "C"],
+    "explanation": "Throughput stabilizes despite higher load (A), signaling a saturation point. I/O or DB limits often cause this (C). Linear scaling (B) and infinite scalability (D) are false.",
+    "learning_objective": "TTA-4.2.4",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "248",
+    "question_text": "A Technical Test Analyst examines **security scan results** showing outdated third-party libraries and missing input validation. Which ONE next step is MOST appropriate?",
+    "options": {
+      "A": "Prioritize patching outdated libraries and perform input-fuzzing to validate remediation",
+      "B": "Defer patching since the issue is non-functional",
+      "C": "Execute performance tests to confirm throughput after patching",
+      "D": "Close the issue because dependency management is handled by operations"
+    },
+    "answers": ["A"],
+    "explanation": "Outdated components and missing validation represent direct vulnerability vectors. Immediate patching and fuzz testing confirm secure behavior post-remediation.",
+    "learning_objective": "TTA-4.3.2",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "249",
+    "question_text": "During automation execution, 30% of UI tests fail after a layout redesign. The errors report 'element not interactable'. Which TWO actions should the Technical Test Analyst prioritize?",
+    "options": {
+      "A": "Refactor selectors using a page-object model to abstract UI changes",
+      "B": "Temporarily disable failing scripts to stabilize CI pipeline",
+      "C": "Add wait conditions or synchronization to handle asynchronous rendering",
+      "D": "Convert UI tests to API tests without validation changes"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) Abstract locators reduce maintenance cost. C) Proper waits handle timing issues. B) hides problems, and D) changes test intent.",
+    "learning_objective": "TTA-5.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "250",
+    "question_text": "A defect trend chart shows high defect density in module X over three iterations. Root-cause analysis reveals poor input validation logic. Which ONE improvement should the Technical Test Analyst recommend?",
+    "options": {
+      "A": "Strengthen unit tests and reviews focusing on input validation paths",
+      "B": "Increase exploratory testing in unrelated modules",
+      "C": "Reduce regression testing frequency to save effort",
+      "D": "Ignore the trend since defect discovery is expected to decline naturally"
+    },
+    "answers": ["A"],
+    "explanation": "Focusing validation tests and static reviews on module X addresses the repeated source of faults, improving prevention and test efficiency.",
+    "learning_objective": "TTA-6.2.1",
+    "klevel": "K4",
+    "points": 3
+  },
+  {
+    "question_id": "251",
+    "question_text": "You are evaluating historical defect data and notice that 70% of post-release defects originated from insufficient integration testing. Which TWO measures will most effectively prevent recurrence?",
+    "options": {
+      "A": "Introduce service virtualization to enable earlier integration testing",
+      "B": "Add additional usability tests after release",
+      "C": "Strengthen static interface analysis and contract validation",
+      "D": "Increase system-level exploratory testing sessions only"
+    },
+    "answers": ["A", "C"],
+    "explanation": "A) and C) directly improve integration reliability by enabling early validation and detecting interface mismatches. Usability or exploratory focus doesn’t address integration causes.",
+    "learning_objective": "TTA-6.1.4",
+    "klevel": "K4",
+    "points": 3
   }
+
+
 ]
